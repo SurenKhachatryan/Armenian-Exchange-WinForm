@@ -231,6 +231,15 @@ namespace Armenian_Exchange
             }
         }
 
+        private void textBoxNewSell_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void textBoxSetValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
         private void textBoxNewBuy_KeyPress(object sender, KeyPressEventArgs e)
         {
             char chr = e.KeyChar;
@@ -275,14 +284,6 @@ namespace Armenian_Exchange
             }
         }
 
-        private void textBoxNewSell_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void textBoxSetValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
+       
     }
 }

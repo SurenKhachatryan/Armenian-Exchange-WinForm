@@ -20,13 +20,13 @@ namespace Armenian_Exchange
             get { return usdbuy; }
             private set
             {
-                if (value >= 300.00 && value <= 999.99)
+                if (value >= 200.00 && value <= 999.99)
                 {
                     usdbuy = value;
                 }
                 else
                 {
-                    MessageBox.Show("Minimum Course 300.00 AMD Maximum 999.99 AMD");
+                    MessageBox.Show("Minimum Course 200.00 AMD Maximum 999.99 AMD");
                 }
             }
         }
@@ -36,13 +36,13 @@ namespace Armenian_Exchange
             get { return usdsell; }
             private set
             {
-                if (value >= 300.00 && value <= 999.99)
+                if (value >= 200.00 && value <= 999.99)
                 {
                     usdsell = value;
                 }
                 else
                 {
-                    MessageBox.Show("Minimum Course 300.00 AMD Maximum 999.99 AMD");
+                    MessageBox.Show("Minimum Course 200.00 AMD Maximum 999.99 AMD");
                 }
             }
         }
@@ -52,13 +52,13 @@ namespace Armenian_Exchange
             get { return rubbuy; }
             private set
             {
-                if (value >= 4.00 && value <= 30.00)
+                if (value >= 1.00 && value <= 30.00)
                 {
                     rubbuy = value;
                 }
                 else
                 {
-                    MessageBox.Show("Minimum Course 4.00 AMD Maximum 30.00 AMD");
+                    MessageBox.Show("Minimum Course 1.00 AMD Maximum 30.00 AMD");
                 }
             }
         }
@@ -69,13 +69,13 @@ namespace Armenian_Exchange
 
             private set
             {
-                if (value >= 4.00 && value <= 30.00)
+                if (value >= 1.00 && value <= 30.00)
                 {
                     rubsell = value;
                 }
                 else
                 {
-                    MessageBox.Show("Minimum Course 4.00 AMD Maximum 30.00 AMD");
+                    MessageBox.Show("Minimum Course 1.00 AMD Maximum 30.00 AMD");
                 }
             }
         }
@@ -86,13 +86,13 @@ namespace Armenian_Exchange
 
             private set
             {
-                if (value >= 400.00 && value <= 999.99)
+                if (value >= 200.00 && value <= 999.99)
                 {
                     eurbuy = value;
                 }
                 else
                 {
-                    MessageBox.Show("Minimum Course 400.00 AMD Maximum 999.99 AMD");
+                    MessageBox.Show("Minimum Course 200.00 AMD Maximum 999.99 AMD");
                 }
             }
         }
@@ -103,20 +103,20 @@ namespace Armenian_Exchange
 
             private set
             {
-                if (value >= 400.00 && value <= 999.99)
+                if (value >= 200.00 && value <= 999.99)
                 {
                     eursell = value;
                 }
                 else
                 {
-                    MessageBox.Show("Minimum Course 400.00 AMD Maximum 999.99 AMD");
+                    MessageBox.Show("Minimum Course 200.00 AMD Maximum 999.99 AMD");
                 }
             }
         }
 
         static Course()
         {
-            AddListCourse(483.10, 485.60, 8.09, 8.40, 576.50, 570, "ALL");
+            AddListCourse(200.00, 999.99, 1.00, 29.99, 200.00, 999.99, "ALL");
         }
 
         public Course()
@@ -131,9 +131,9 @@ namespace Armenian_Exchange
         {
         }
 
-        protected Course(double usdbuy = 483.10, double usdsell = 485.60,
-                         double rubbuy = 8.09, double rubsell = 8.40,
-                         double eurbuy = 576.50, double eursell = 570,
+        protected Course(double usdbuy = 200.00, double usdsell = 999.99,
+                         double rubbuy = 1.00, double rubsell = 30.00,
+                         double eurbuy = 200.00, double eursell = 999.99,
                          string currency = "ALL")
         {
             AddListCourse(usdbuy, usdsell, rubbuy, rubsell, eurbuy, eursell, currency);

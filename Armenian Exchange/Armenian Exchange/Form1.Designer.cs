@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBoxSetValue = new System.Windows.Forms.TextBox();
             this.textBoxGetResult1 = new System.Windows.Forms.TextBox();
@@ -427,10 +428,11 @@
             this.Controls.Add(this.textBoxGetResult2);
             this.Controls.Add(this.textBoxGetResult1);
             this.Controls.Add(this.textBoxSetValue);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(276, 224);
             this.MinimumSize = new System.Drawing.Size(276, 224);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Arm Exchange";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.InitializerStringEmpty_MouseClick);
             this.ResumeLayout(false);

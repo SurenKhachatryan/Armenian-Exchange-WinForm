@@ -195,6 +195,7 @@ namespace Armenian_Exchange
             textBoxNewBuy.Text = labelRubBuy.Text;
             textBoxNewSell.Text = labelRubSell.Text;
         }
+
         private void InitializerStringEmpty()
         {
             if (textBoxNewBuy.Text == "")
@@ -331,6 +332,7 @@ namespace Armenian_Exchange
             else
             if (textBoxNewSell.Text.Length != 1 && textBoxNewSell.SelectionStart == 1 && textBoxNewSell.Text[1] == 44 && chr == 8)
             {
+                textBoxNewSell.Text = textBoxNewSell.Text.Remove(0, 2);
                 e.Handled = true;
             }
             else
@@ -376,6 +378,7 @@ namespace Armenian_Exchange
             else
              if (textBoxSetValue.Text.Length != 1 && textBoxSetValue.SelectionStart == 1 && textBoxSetValue.Text[1] == 44 && chr == 8)
             {
+                textBoxSetValue.Text = textBoxSetValue.Text.Remove(0, 2);
                 e.Handled = true;
             }
             else
@@ -384,6 +387,7 @@ namespace Armenian_Exchange
                 e.Handled = true;
             }
         }
+
         private void textBoxNewBuy_KeyPress(object sender, KeyPressEventArgs e)
         {
             str = "1";
@@ -421,6 +425,7 @@ namespace Armenian_Exchange
             if (textBoxNewBuy.Text.Length != 1 && textBoxNewBuy.SelectionStart == 1 && textBoxNewBuy.Text[1] == 44 && chr == 8)
             {
                 e.Handled = true;
+                textBoxNewBuy.Text = textBoxNewBuy.Text.Remove(0, 2);
             }
             else
             if (textBoxNewBuy.Text.Length == 5 && chr != 8 && textBoxNewBuy.Text[4] == 44 && textBoxNewBuy.SelectionStart < 5)

@@ -117,6 +117,7 @@
             // textBoxNewBuy
             // 
             this.textBoxNewBuy.Location = new System.Drawing.Point(115, 90);
+            this.textBoxNewBuy.MaxLength = 6;
             this.textBoxNewBuy.Name = "textBoxNewBuy";
             this.textBoxNewBuy.Size = new System.Drawing.Size(48, 20);
             this.textBoxNewBuy.TabIndex = 4;
@@ -129,6 +130,7 @@
             // textBoxNewSell
             // 
             this.textBoxNewSell.Location = new System.Drawing.Point(164, 90);
+            this.textBoxNewSell.MaxLength = 6;
             this.textBoxNewSell.Name = "textBoxNewSell";
             this.textBoxNewSell.Size = new System.Drawing.Size(48, 20);
             this.textBoxNewSell.TabIndex = 5;

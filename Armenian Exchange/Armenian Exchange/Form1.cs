@@ -10,7 +10,9 @@ namespace Armenian_Exchange
         private IUSD us;
         private IEUR eu;
         private IRUB ru;
-        private Fanctions classlibraryfanction = new Fanctions();
+        private string str;
+        private string temp;
+        private Fanctions fa = new Fanctions();
 
         public Form1()
         {
@@ -32,6 +34,54 @@ namespace Armenian_Exchange
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (fa.SearchDot(textBoxNewBuy.Text) || fa.SearchDot(textBoxNewSell.Text) || fa.SearchDot(textBoxSetValue.Text))
+            {
+                switch (str)
+                {
+                    case "1":
+                        textBoxNewBuy.Text = fa.DotToCommas(textBoxNewBuy.Text);
+                        textBoxNewBuy.SelectionStart = fa.GetIndexCommas(textBoxNewBuy.Text) + 1;
+                        break;
+                    case "2":
+                        textBoxNewSell.Text = fa.DotToCommas(textBoxNewSell.Text);
+                        textBoxNewSell.SelectionStart = fa.GetIndexCommas(textBoxNewSell.Text) + 1;
+                        break;
+                    case "3":
+                        textBoxSetValue.Text = fa.DotToCommas(textBoxSetValue.Text);
+                        textBoxSetValue.SelectionStart = fa.GetIndexCommas(textBoxSetValue.Text) + 1;
+                        break;
+                }
+            }
+
+            if (textBoxSetValue.Text != "")
+            {
+                if (textBoxSetValue.Text.Length > 1 && textBoxSetValue.SelectionStart == 1 && textBoxSetValue.Text[0] == 44
+                    || textBoxSetValue.Text[0] == 44)
+                {
+                    textBoxSetValue.Text = "0" + textBoxSetValue.Text;
+                    textBoxSetValue.SelectionStart = 2;
+                }
+            }
+            if (textBoxNewBuy.Text != "")
+            {
+                if (textBoxNewBuy.Text.Length > 1 && textBoxNewBuy.SelectionStart == 1 && textBoxNewBuy.Text[0] == 44
+                    || textBoxNewBuy.Text[0] == 44)
+                {
+                    textBoxNewBuy.Text = "0" + textBoxNewBuy.Text;
+                    textBoxNewBuy.SelectionStart = 2;
+                }
+            }
+            if (textBoxNewSell.Text != "")
+            {
+                if (textBoxNewSell.Text.Length > 1 && textBoxNewSell.SelectionStart == 1 && textBoxNewSell.Text[0] == 44
+                    || textBoxNewSell.Text[0] == 44)
+                {
+                    textBoxNewSell.Text = "0" + textBoxNewSell.Text;
+                    textBoxNewSell.SelectionStart = 2;
+                }
+            }
+
+
             if (textBoxSetValue.Text != "" && textBoxSetValue.Text != "0,")
             {
                 switch (comboBoxCurrency.SelectedIndex)
@@ -106,30 +156,44 @@ namespace Armenian_Exchange
                 labelRubBuy.Text = Course.CourseList[2].ToString();
                 labelRubSell.Text = Course.CourseList[3].ToString();
             }
+            if (textBoxNewBuy.Text[textBoxNewBuy.Text.Length - 1] == 44 || textBoxNewSell.Text[textBoxNewSell.Text.Length - 1] == 44)
+            {
+                if (radioButtonUSD.Checked)
+                {
+                    textBoxNewBuy.Text = Course.CourseList[0].ToString();
+                    textBoxNewSell.Text = Course.CourseList[1].ToString();
+                }
+                else
+               if (radioButtonEUR.Checked)
+                {
+                    textBoxNewBuy.Text = Course.CourseList[4].ToString();
+                    textBoxNewSell.Text = Course.CourseList[5].ToString();
+                }
+                else
+               if (radioButtonRUB.Checked)
+                {
+                    textBoxNewBuy.Text = Course.CourseList[2].ToString();
+                    textBoxNewSell.Text = Course.CourseList[3].ToString();
+                }
+            }
         }
 
         private void radioButtonUSD_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxNewBuy.Text = labelRubBuy.Text;
-            textBoxNewSell.Text = labelRubSell.Text;
-            textBoxNewBuy.MaxLength = 5;
-            textBoxNewSell.MaxLength = 5;
+            textBoxNewBuy.Text = labelUsdBuy.Text;
+            textBoxNewSell.Text = labelUsdSell.Text;
         }
 
         private void radioButtonEUR_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxNewBuy.Text = labelUsdBuy.Text;
-            textBoxNewSell.Text = labelUsdSell.Text;
-            textBoxNewBuy.MaxLength = 6;
-            textBoxNewSell.MaxLength = 6;
+            textBoxNewBuy.Text = labelEurBuy.Text;
+            textBoxNewSell.Text = labelEurSell.Text;
         }
 
         private void radioButtonRUB_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxNewBuy.Text = labelEurBuy.Text;
-            textBoxNewSell.Text = labelEurSell.Text;
-            textBoxNewBuy.MaxLength = 6;
-            textBoxNewSell.MaxLength = 6;
+            textBoxNewBuy.Text = labelRubBuy.Text;
+            textBoxNewSell.Text = labelRubSell.Text;
         }
         private void InitializerStringEmpty()
         {
@@ -233,20 +297,101 @@ namespace Armenian_Exchange
 
         private void textBoxNewSell_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            str = "2";
+            char chr = e.KeyChar;
+            if (chr == 46)
+            {
+                chr = (char)44;
+            }
+            if (textBoxNewSell.Text == "" && chr != 8 && chr == 44)
+            {
+                textBoxNewSell.Text = "0";
+                textBoxNewSell.SelectionStart = 2;
+            }
+            else
+            if (chr == 44 && textBoxNewSell.Text != "")
+            {
+                if (chr == 44 && textBoxNewSell.SelectionStart == 5)
+                {
+                    e.Handled = true;
+                }
+                else
+                if (fa.SearchComma(textBoxNewSell.Text))
+                { }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            if (!Char.IsDigit(chr) && chr != 8 || (textBoxNewSell.Text.Length == 5 && chr == 44))
+            {
+                e.Handled = true;
+            }
+            else
+            if (textBoxNewSell.Text.Length != 1 && textBoxNewSell.SelectionStart == 1 && textBoxNewSell.Text[1] == 44 && chr == 8)
+            {
+                e.Handled = true;
+            }
+            else
+            if (textBoxNewSell.Text.Length == 5 && chr != 8 && textBoxNewSell.Text[4] == 44 && textBoxNewSell.SelectionStart < 5)
+            {
+                e.Handled = true;
+            }
         }
 
         private void textBoxSetValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            str = "3";
+            char chr = e.KeyChar;
+            if (chr == 46)
+            {
+                chr = (char)44;
+            }
+            if ((textBoxSetValue.Text == "" || textBoxSetValue.Text == "0") && chr != 8 && chr == 44)
+            {
+                textBoxSetValue.Text = "0";
+                textBoxSetValue.SelectionStart = 2;
+            }
+            else
+             if (chr == 44 && textBoxSetValue.Text != "")
+            {
+                if (chr == 44 && textBoxSetValue.SelectionStart == 11)
+                {
+                    e.Handled = true;
+                }
+                else
+                if (fa.SearchComma(textBoxSetValue.Text))
+                { }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+             if (!Char.IsDigit(chr) && chr != 8 || (textBoxSetValue.Text.Length == 11 && chr == 44))
+            {
+                e.Handled = true;
+            }
+            else
+             if (textBoxSetValue.Text.Length != 1 && textBoxSetValue.SelectionStart == 1 && textBoxSetValue.Text[1] == 44 && chr == 8)
+            {
+                e.Handled = true;
+            }
+            else
+             if (textBoxSetValue.Text.Length == 11 && chr != 8 && textBoxSetValue.Text[10] == 44 && textBoxSetValue.SelectionStart < 11)
+            {
+                e.Handled = true;
+            }
         }
         private void textBoxNewBuy_KeyPress(object sender, KeyPressEventArgs e)
         {
+            str = "1";
             char chr = e.KeyChar;
-            //if (chr == 46)
-            //{
-            //    chr = (char)44;
-            //}
+            if (chr == 46)
+            {
+                chr = (char)44;
+            }
             if (textBoxNewBuy.Text == "" && chr != 8 && chr == 44)
             {
                 textBoxNewBuy.Text = "0";
@@ -260,7 +405,7 @@ namespace Armenian_Exchange
                     e.Handled = true;
                 }
                 else
-                if (classlibraryfanction.SearchComma(textBoxNewBuy.Text))
+                if (fa.SearchComma(textBoxNewBuy.Text))
                 { }
                 else
                 {
@@ -268,7 +413,7 @@ namespace Armenian_Exchange
                 }
             }
             else
-            if (!Char.IsDigit(chr) && chr != 8 || (textBoxNewBuy.Text.Length == 5 && chr == 44) || textBoxNewBuy.Text == "" && chr != 48)
+            if (!Char.IsDigit(chr) && chr != 8 || (textBoxNewBuy.Text.Length == 5 && chr == 44))
             {
                 e.Handled = true;
             }
@@ -283,7 +428,5 @@ namespace Armenian_Exchange
                 e.Handled = true;
             }
         }
-
-       
     }
 }

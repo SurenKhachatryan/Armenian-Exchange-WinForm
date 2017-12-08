@@ -9,19 +9,19 @@ namespace Armenian_Exchange
         public EUR(double eurbuy, double eursell) : base(eurbuy: eurbuy, eursell: eursell, currency: "EUR")
         { }
 
-        public double ToAmd(double value)
+        public double ToAmd(double eurvalue)
         {
-            return value * Eurbuy;
+            return eurvalue * Eurbuy;
         }
 
-        public double ToRub(double value)
+        public double ToRub(double eurvalue)
         {
-            return (value * Eurbuy) / Rubsell;
+            return (eurvalue * Eurbuy) / Rubsell;
         }
 
-        public double ToUsd(double value)
+        public double ToUsd(double eurvalue)
         {
-            return (value * Eurbuy) / Usdsell;
+            return (eurvalue * Eurbuy) / Usdsell;
         }
     }
 }

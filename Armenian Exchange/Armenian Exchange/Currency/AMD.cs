@@ -3,17 +3,17 @@ namespace Armenian_Exchange
 {
     class AMD : Course, IUSD, IEUR, IRUB
     {
-        public double ToEur(double value)
+        public double ToEur(double amdvalue)
         {
-            return value / Eurbuy;
+            return amdvalue / Eursell;
         }
-        public double ToRub(double value)
+        public double ToRub(double amdvalue)
         {
-            return value / Rubbuy;
+            return amdvalue / Rubsell;
         }
-        public double ToUsd(double value)
+        public double ToUsd(double amdvalue)
         {
-            return value / Usdbuy;
+            return amdvalue / Usdsell;
         }
     }
 }

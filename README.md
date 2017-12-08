@@ -1,8 +1,6 @@
 # Armenian-Exchange-WinForm
 
-# Programm
-
-# Picture
+# Programm Picture
 ![](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian%20Exchange.PNG)
 
 # GIF

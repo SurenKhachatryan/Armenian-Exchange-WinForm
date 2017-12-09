@@ -233,7 +233,7 @@
             this.labelUsdBuy.Location = new System.Drawing.Point(35, 54);
             this.labelUsdBuy.Name = "labelUsdBuy";
             this.labelUsdBuy.Size = new System.Drawing.Size(35, 13);
-            this.labelUsdBuy.TabIndex = 13;
+            this.labelUsdBuy.TabIndex = 0;
             this.labelUsdBuy.Text = "label6";
             this.labelUsdBuy.MouseClick += new System.Windows.Forms.MouseEventHandler(this.InitializerStringEmpty_MouseClick);
             // 

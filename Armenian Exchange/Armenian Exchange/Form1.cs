@@ -565,25 +565,39 @@ namespace Armenian_Exchange
                 e.Handled = true;
             }
             else
-            if (fa.SearchComma(textBoxNewBuy.Text) && (textBoxNewBuy.Text == ""
-                || textBoxNewBuy.Text == "0" || textBoxNewBuy.SelectionStart == 0) && chr != 8 && chr == 44)
+            if ((fa.SearchComma(textBoxNewBuy.Text) || textBoxNewBuy.SelectionLength >= 1) && chr != 8 && chr == 44)
             {
-                if (textBoxNewBuy.Text.Length != 5)
+                int a = textBoxNewBuy.SelectionLength;
+                int b = textBoxNewBuy.SelectionStart;
+
+
+                if (textBoxNewBuy.Text.Length == 5 && (textBoxNewBuy.SelectionStart == 5 || textBoxNewBuy.SelectionStart == 0) ||
+                   (fa.GetIndexCommas(textBoxNewBuy.Text) <= b || fa.GetIndexCommas(textBoxNewBuy.Text) >= b + a)
+                    && fa.GetIndexCommas(textBoxNewBuy.Text) != -1 && textBoxNewBuy.SelectionStart != textBoxNewBuy.Text.Length)
                 {
-                    if (textBoxNewBuy.SelectionLength == textBoxNewBuy.Text.Length)
+                    e.Handled = true;
+                }
+                else
+                if (textBoxNewBuy.SelectionLength == textBoxNewBuy.Text.Length)
+                {
+                    textBoxNewBuy.Text = "0";
+                    textBoxNewBuy.SelectionStart = 1;
+                }
+                else
+                {
+                    for (int i = 0; i < a; i++)
                     {
-                        textBoxNewBuy.Text = "0";
-                        textBoxNewBuy.SelectionStart = 1;
+                        textBoxNewBuy.Text = textBoxNewBuy.Text.Remove(b, 1);
                     }
-                    else
+                    if (textBoxNewBuy.SelectionStart == 0 && b == 0)
                     {
                         textBoxNewBuy.Text = "0" + textBoxNewBuy.Text;
                         textBoxNewBuy.SelectionStart = 1;
                     }
-                }
-                else
-                {
-                    e.Handled = true;
+                    else
+                    {
+                        textBoxNewBuy.SelectionStart = b;
+                    }
                 }
             }
             else

@@ -66,10 +66,7 @@ namespace Armenian_Exchange
                 while (textBoxSetValue.Text.Length > 1 && textBoxSetValue.Text[0] == '0' && textBoxSetValue.Text[1] != ',')
                 {
                     textBoxSetValue.Text = textBoxSetValue.Text.Remove(0, 1);
-                    if (textBoxSetValue.SelectionStart == 0 && textBoxSetValue.Text.Length > 1 && !fa.SearchComma(textBoxSetValue.Text))
-                    {
-                        textBoxSetValue.SelectionStart = 1;
-                    }
+                    textBoxSetValue.SelectionStart = 0;
                 }
                 if (textBoxSetValue.Text.Length == 1 && textBoxSetValue.Text[0] == '0')
                 {
@@ -85,10 +82,7 @@ namespace Armenian_Exchange
                 while (textBoxNewBuy.Text.Length > 1 && textBoxNewBuy.Text[0] == '0' && textBoxNewBuy.Text[1] != ',')
                 {
                     textBoxNewBuy.Text = textBoxNewBuy.Text.Remove(0, 1);
-                    if (textBoxNewBuy.SelectionStart == 0 && textBoxNewBuy.Text.Length > 1 && !fa.SearchComma(textBoxNewBuy.Text))
-                    {
-                        textBoxNewBuy.SelectionStart = 1;
-                    }
+                    textBoxNewBuy.SelectionStart = 1;
                 }
                 if (textBoxNewBuy.Text.Length == 1 && textBoxNewBuy.Text[0] == '0')
                 {
@@ -104,10 +98,7 @@ namespace Armenian_Exchange
                 while (textBoxNewSell.Text.Length > 1 && textBoxNewSell.Text[0] == '0' && textBoxNewSell.Text[1] != ',')
                 {
                     textBoxNewSell.Text = textBoxNewSell.Text.Remove(0, 1);
-                    if (textBoxNewSell.SelectionStart == 0 && textBoxNewSell.Text.Length > 1 && !fa.SearchComma(textBoxNewSell.Text))
-                    {
-                        textBoxNewSell.SelectionStart = 1;
-                    }
+                    textBoxNewSell.SelectionStart = 1;
                 }
                 if (textBoxNewSell.Text.Length == 1 && textBoxNewSell.Text[0] == '0')
                 {
@@ -233,21 +224,18 @@ namespace Armenian_Exchange
         private void InitializerStringEmpty()
         {
             targettextbox = "";
-
+            ActiveControl = comboBoxCurrency;
             if (textBoxNewBuy.Text == "")
             {
                 textBoxNewBuy.Text = "0";
-                textBoxNewBuy.SelectionStart = 1;
             }
             if (textBoxNewSell.Text == "")
             {
                 textBoxNewSell.Text = "0";
-                textBoxNewSell.SelectionStart = 1;
             }
             if (textBoxSetValue.Text == "")
             {
                 textBoxSetValue.Text = "0";
-                textBoxSetValue.SelectionStart = 1;
             }
         }
 
@@ -359,7 +347,8 @@ namespace Armenian_Exchange
                && (textBoxNewSell.SelectionLength >= 1 || fa.SearchComma(textBoxNewSell.Text)
                || textBoxNewSell.SelectionLength == textBoxNewSell.Text.Length))
             {
-            if (textBoxNewSell.SelectionStart == 0 && textBoxNewSell.Text.Length == 6 && textBoxNewSell.SelectionLength == 1)
+                if (textBoxNewSell.SelectionStart == 0 && textBoxNewSell.Text.Length == 6 && textBoxNewSell.SelectionLength == 1
+                    || (fa.GetIndexCommas(textBoxNewSell.Text) + 1) > textBoxNewSell.SelectionLength)
                 {
                     e.Handled = true;
                 }
@@ -367,10 +356,6 @@ namespace Armenian_Exchange
                 if (textBoxNewSell.SelectionStart == 0 && textBoxNewSell.SelectionLength != 0)
                 {
                     textBoxNewSell.Text = textBoxNewSell.Text.Remove(0, selectionlength);
-                    if (fa.SearchComma(textBoxNewSell.Text) && textBoxNewSell.Text != "")
-                    {
-                        textBoxNewSell.Text = textBoxNewSell.Text.Remove(0, 1);
-                    }
                     textBoxNewSell.Text = "0," + textBoxNewSell.Text;
                     textBoxNewSell.SelectionStart = 2;
                 }
@@ -491,7 +476,8 @@ namespace Armenian_Exchange
                && (textBoxSetValue.SelectionLength >= 1 || fa.SearchComma(textBoxSetValue.Text)
                || textBoxSetValue.SelectionLength == textBoxSetValue.Text.Length))
             {
-                if (textBoxSetValue.SelectionStart == 0 && textBoxSetValue.Text.Length == 12 && textBoxSetValue.SelectionLength == 1)
+                if (textBoxSetValue.SelectionStart == 0 && textBoxSetValue.Text.Length == 12 && textBoxSetValue.SelectionLength == 1
+                    || (fa.GetIndexCommas(textBoxSetValue.Text) + 1) > textBoxSetValue.SelectionLength)
                 {
                     e.Handled = true;
                 }
@@ -499,10 +485,6 @@ namespace Armenian_Exchange
                 if (textBoxSetValue.SelectionStart == 0 && textBoxSetValue.SelectionLength != 0)
                 {
                     textBoxSetValue.Text = textBoxSetValue.Text.Remove(0, selectionlength);
-                    if (fa.SearchComma(textBoxSetValue.Text))
-                    {
-                        textBoxSetValue.Text = textBoxSetValue.Text.Remove(0, 1);
-                    }
                     textBoxSetValue.Text = "0," + textBoxSetValue.Text;
                     textBoxSetValue.SelectionStart = 2;
                 }
@@ -624,7 +606,8 @@ namespace Armenian_Exchange
                 && (textBoxNewBuy.SelectionLength >= 1 || fa.SearchComma(textBoxNewBuy.Text)
                 || textBoxNewBuy.SelectionLength == textBoxNewBuy.Text.Length))
             {
-                if (textBoxNewBuy.SelectionStart == 0 && textBoxNewBuy.Text.Length == 6 && textBoxNewBuy.SelectionLength == 1)
+                if (textBoxNewBuy.SelectionStart == 0 && textBoxNewBuy.Text.Length == 6 && textBoxNewBuy.SelectionLength == 1
+                    || (fa.GetIndexCommas(textBoxNewBuy.Text) + 1) > textBoxNewBuy.SelectionLength)
                 {
                     e.Handled = true;
                 }
@@ -632,10 +615,6 @@ namespace Armenian_Exchange
                 if (textBoxNewBuy.SelectionStart == 0 && textBoxNewBuy.SelectionLength != 0)
                 {
                     textBoxNewBuy.Text = textBoxNewBuy.Text.Remove(0, selectionlength);
-                    if (fa.SearchComma(textBoxNewBuy.Text))
-                    {
-                        textBoxNewBuy.Text = textBoxNewBuy.Text.Remove(0, 1);
-                    }
                     textBoxNewBuy.Text = "0," + textBoxNewBuy.Text;
                     textBoxNewBuy.SelectionStart = 2;
                 }

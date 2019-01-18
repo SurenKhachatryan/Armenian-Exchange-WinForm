@@ -3,7 +3,7 @@
 </p>
 <h2>Armenian Exchange WinForm</h2>
 
-# Programm Picture
+## Programm Picture
 ![](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian%20Exchange.PNG)
 
 # GIF

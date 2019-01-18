@@ -43,11 +43,5 @@
     <Compile Include="Fanctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Armenian Exchange\Armenian Exchange.csproj">
-      <Project>{173948bd-363f-4faf-ad61-646c1f7b556c}</Project>
-      <Name>Armenian Exchange</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

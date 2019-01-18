@@ -1,5 +1,5 @@
 # Armenian-Exchange-WinForm 
-<p align="center">
+<p align="Left">
   <a href="#">[Download ZIP](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian_Exchange.exe.zip)</span></a>
 </p>
 

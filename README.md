@@ -1,8 +1,7 @@
-# Armenian-Exchange-WinForm 
+ <b>Some Links:</b><br> 
 
-<p align="Right">
-<a href="https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/raw/master/Armenian_Exchange.exe.zip" >Download ZIP</a>
-</p>
+
+<a align="Right" href="https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/raw/master/Armenian_Exchange.exe.zip">Download ZIP</a>
 
 # Programm Picture
 ![](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian%20Exchange.PNG)

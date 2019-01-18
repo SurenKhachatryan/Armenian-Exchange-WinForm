@@ -1,5 +1,5 @@
 # Armenian-Exchange-WinForm 
-   ###               \t                                        [Download ZIP](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian_Exchange.exe.zip)
+    <div style="text-align:center">[Download ZIP](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian_Exchange.exe.zip)</div>
 # Programm Picture
 ![](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian%20Exchange.PNG)
 

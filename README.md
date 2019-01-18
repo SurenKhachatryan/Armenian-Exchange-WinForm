@@ -1,7 +1,8 @@
 <p align="Center">
-<a href="https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/raw/master/Armenian_Exchange.exe.zip"><h2>Download ZIP</h2></a>
+<h2>
+  <a href="https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/raw/master/Armenian_Exchange.exe.zip">Download ZIP</a>
+</h2>
 </p>
-<h2>Armenian Exchange WinForm</h2>
 
 ## Programm Picture
 ![](https://github.com/SurenKhachatryan/Armenian-Exchange-WinForm/blob/master/Armenian%20Exchange.PNG)
